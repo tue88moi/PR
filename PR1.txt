@@ -1,0 +1,74 @@
+задание 1 пр
+с++
+#include <iostream> 
+#include <cstring> 
+#include <vector> 
+ 
+using namespace std; 
+int main() { 
+    char BU[]{ 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' }; 
+    string w; 
+    cin >> w; 
+    vector<char> cv; 
+    for (char c : w) { 
+        cv.push_back(c); 
+ 
+    } 
+ 
+    for (char c : cv) { 
+        for (int i = 0; 25; ++i) { 
+            if ( BU[i] == c) { 
+                cout << BU[25 - i]; 
+                break; 
+            } 
+ 
+        } 
+    } 
+}
+
+go
+
+package main
+
+import (
+ "fmt"
+)
+
+func main() {
+ BU := [26]rune{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'}
+ var w string
+ fmt.Scan(&w)
+
+ for _, c := range w {
+  found := false
+  for i := 0; i < 26; i++ {
+   if BU[i] == c {
+    fmt.Print(string(BU[25-i]))
+    found = true
+    break
+   }
+  }
+  if !found {
+   fmt.Print(string(c)) // Если символ не найден, выводим его как есть
+  }
+ }
+ fmt.Println() // Завершаем вывод новой строкой
+}
+
+python
+
+def main():
+    BU = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    w = input()
+
+    for c in w:
+        if c in BU:
+            index = BU.index(c)
+            print(BU[25 - index], end='')  # Выводим "обратный" символ
+        else:
+            print(c, end='')  # Если символ не найден, выводим его как есть
+
+    print()  # Завершаем вывод новой строкой
+
+if __name__ == "__main__":
+    main()
