@@ -1,0 +1,163 @@
+pr 2
+
+c++
+#include <iostream> 
+#include <cstring> 
+#include <vector> 
+#include <ctime> 
+#include <cstdlib> 
+#include <algorithm> 
+ 
+using namespace std; 
+int main() { 
+ setlocale(LC_ALL, "rus"); 
+ int j = rand(); 
+ int* m1 = new int[j]; 
+ int* m2 = new int[j]; 
+ cout << j << endl; 
+ for (int i = 0; i < j; i++) { 
+  m1[i] = rand(); 
+  m2[i] = m1[i]; 
+  cout << m1[i] << "  "; 
+ } 
+ cout << endl; 
+ sort(m2, m2 + j); 
+ for (int i = 0; i < j; i++) { 
+  cout << m2[i] << "  "; 
+ } 
+ cout << endl; 
+ cout << "загдайте число" << endl; 
+ int n; 
+ cin >> n; 
+ int l = 0; 
+ int r = j - 1; 
+ int d; 
+ int g = 0; 
+ while (l <= r) { 
+  d = l + (r - l) / 2; 
+  if (m2[d] == n) { 
+   break; 
+  } 
+  else if (m2[d] < n) { 
+   l = d + 1; 
+  } 
+  else { 
+   r = d - 1; 
+  } 
+  cout << l << "  " << r << endl; 
+  g = g++; 
+ } 
+ cout << d << "  индекс в отсортированном массиве" << endl; 
+ cout << g << "  кол-во действий" << endl; 
+ for (int i = 0; i < j; i++) { 
+  if (m2[d] == m1[i]) { 
+   cout << i << "  индекс в неотсортированном массиве" << endl; 
+  } 
+ } 
+}
+
+go
+
+package main
+
+import (
+ "fmt"
+ "math/rand"
+ "sort"
+ "time"
+)
+
+func main() {
+ rand.Seed(time.Now().UnixNano())
+ j := rand.Intn(100) + 1 // Генерируем случайное число от 1 до 100
+ m1 := make([]int, j)
+ m2 := make([]int, j)
+
+ fmt.Println(j)
+ for i := 0; i < j; i++ {
+  m1[i] = rand.Int()
+  m2[i] = m1[i]
+  fmt.Print(m1[i], "  ")
+ }
+ fmt.Println()
+
+ sort.Ints(m2)
+ for i := 0; i < j; i++ {
+  fmt.Print(m2[i], "  ")
+ }
+ fmt.Println()
+
+ fmt.Println("Загдайте число")
+ var n int
+ fmt.Scan(&n)
+
+ l, r := 0, j-1
+ var d, g int
+
+ for l <= r {
+  d = l + (r-l)/2
+  if m2[d] == n {
+   break
+  } else if m2[d] < n {
+   l = d + 1
+  } else {
+   r = d - 1
+  }
+  fmt.Println(l, r)
+  g++
+ }
+
+ fmt.Println(d, "индекс в отсортированном массиве")
+ fmt.Println(g, "кол-во действий")
+
+ for i := 0; i < j; i++ {
+  if m2[d] == m1[i] {
+   fmt.Println(i, "индекс в неотсортированном массиве")
+  }
+ }
+}
+
+python
+
+import random
+
+def main():
+    random.seed()
+    j = random.randint(1, 100)  # Генерируем случайное число от 1 до 100
+    m1 = [random.randint(0, 1000) for _ in range(j)]  # Случайные числа
+    m2 = m1.copy()
+
+    print(j)
+    for num in m1:
+        print(num, end="  ")
+    print()
+
+    m2.sort()
+    for num in m2:
+        print(num, end="  ")
+    print()
+
+    n = int(input("Загдайте число: "))
+
+    l, r = 0, j - 1
+    g = 0
+    while l <= r:
+        d = l + (r - l) // 2
+        if m2[d] == n:
+            break
+        elif m2[d] < n:
+            l = d + 1
+        else:
+            r = d - 1
+        print(l, r)
+        g += 1
+
+    print(d, "индекс в отсортированном массиве")
+    print(g, "кол-во действий")
+
+    for i in range(j):
+        if m2[d] == m1[i]:
+            print(i, "индекс в неотсортированном массиве")
+
+if __name__ == "__main__":
+    main()
